@@ -15,3 +15,21 @@ connection.connect((err) => {
   if (err) throw err;
   console.log("Connection listening");
 });
+
+const mainPrompt = [
+  {
+    type: "list",
+    message: "What would you like to do?",
+    choices: [
+      "Add department",
+      "Add role",
+      "Add employee",
+      "View departments",
+      "View roles",
+      "View employees",
+      "Update employee role",
+      "Quit",
+    ],
+    name: "userchoice",
+  },
+];
