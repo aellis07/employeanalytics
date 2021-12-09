@@ -1,24 +1,8 @@
-DROP DATABASE IF EXISTS company_db;
-CREATE DATABASE company_db;
+INSERT INTO department (name)
+VALUES ("Accounting"), ("Engineering"), ("HR"), ("Sales");
 
-USE company_db;
+INSERT INTO role (title, salary, department_id)
+VALUE ("Accountant", 65000.00, 1), ("Engineer", 85000, 2), ("Manager", 90000, 3), ("Sales Associate", 85650, 4);
 
-CREATE TABLE department (
-id INT PRIMARY KEY,
-name VARCHAR(30) NOT NULL
-);
-
-CREATE TABLE role (
-id INT PRIMARY KEY,
-title VARCHAR(30) NOT NULL,
-salary DECIMAL,
-department_id INT
-);
-
-CREATE TABLE employee (
-id INT PRIMARY KEY,
-first_name VARCHAR(30),
-last_name VARCHAR(30),
-role_id INT,
-manager_id INT
-);
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUE ("Joe", "Shmo", 3, null), ("Tanner", "Banner", 2, 3), ("Shmandy", "Dandy", 3, 2), ("Mark", "Bark", 4, 3);

@@ -1,8 +1,10 @@
+// DEPENDENCIES
 const { response } = require("express");
 const inquirer = require("inquirer");
 require("console.table");
 const mysql = require("mysql");
 
+// CREATING MYSQL-JS CONNCECTION
 const connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
@@ -11,11 +13,13 @@ const connection = mysql.createConnection({
   database: "company_db",
 });
 
+// CALLING MAINFUNC WHEN CONNECTION IS MADE
 connection.connect((err) => {
   if (err) throw err;
   console.log("Connection listening");
+  mainFunc();
 });
-
+// MAIN USER PROMPT
 const mainPrompt = [
   {
     type: "list",
@@ -33,3 +37,8 @@ const mainPrompt = [
     name: "userchoice",
   },
 ];
+
+// MAIN FUNCTION
+function mainFunc() {
+  inquirer.prompt(mainPrompt).then();
+}
