@@ -13,7 +13,7 @@ const connection = mysql.createConnection({
   database: "company_db",
 });
 
-// CALLING MAINFUNC WHEN CONNECTION IS MADE
+// CALLING mainFunc(); WHEN CONNECTION IS MADE
 connection.connect((err) => {
   if (err) throw err;
   console.log("Connection listening");
@@ -44,6 +44,7 @@ function mainFunc() {
     switch (response.userchoice) {
       case "Add department":
         // some function to add department
+        newDepartment();
         break;
       case "Add role":
         // some function to add role
@@ -65,4 +66,25 @@ function mainFunc() {
         break;
     }
   });
+}
+
+function newDepartment() {
+  console.log("You selected: Add new department");
+  inquirer
+    .prompt({
+      type: "input",
+      message: "What is the department name?",
+      name: "departmentName",
+    })
+    .then((response) => {
+      connection.query(
+        "INSERT INTO department (name) VALUES (?)",
+        [response.departmentName],
+        (err, res) => {
+          if (err) throw err;
+          console.table(res);
+          mainFunc();
+        }
+      );
+    });
 }
