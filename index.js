@@ -56,10 +56,11 @@ function mainFunc() {
         break;
       case "View departments":
         // some function to view departments
-        viewDepartment();
+        viewDepartments();
         break;
       case "View roles":
         // some function to view roles
+        viewRoles();
         break;
       case "View employee":
         // some function to view employees
@@ -168,9 +169,19 @@ function newEmployee() {
     });
 }
 
-function viewDepartment() {
+function viewDepartments() {
   console.log("You selected: View department");
   const query = "SELECT * FROM department";
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+    mainFunc();
+  });
+}
+
+function viewRoles() {
+  console.log("You selected: View roles");
+  const query = "SELECT * FROM role";
   connection.query(query, (err, res) => {
     if (err) throw err;
     console.table(res);
