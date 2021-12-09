@@ -40,5 +40,29 @@ const mainPrompt = [
 
 // MAIN FUNCTION
 function mainFunc() {
-  inquirer.prompt(mainPrompt).then();
+  inquirer.prompt(mainPrompt).then((response) => {
+    switch (response.userchoice) {
+      case "Add department":
+        // some function to add department
+        break;
+      case "Add role":
+        // some function to add role
+        break;
+      case "Add employee":
+        // some function to add employee
+        break;
+      case "View departments":
+        // some function to view departments
+        break;
+      case "View roles":
+        // some function to view roles
+        break;
+      case "View employee":
+        // some function to view employees
+        break;
+      case "Update employee role":
+        // some function to update employees role
+        break;
+    }
+  });
 }
