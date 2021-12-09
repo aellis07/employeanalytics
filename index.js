@@ -39,6 +39,7 @@ const mainPrompt = [
 ];
 
 // MAIN FUNCTION
+// Main Screen
 function mainFunc() {
   inquirer.prompt(mainPrompt).then((response) => {
     switch (response.userchoice) {
@@ -74,21 +75,32 @@ function mainFunc() {
   });
 }
 
+// Function for each prompt choice
+// =============================================
 function newDepartment() {
   console.log("You selected: Add new department");
+  //
   inquirer
     .prompt({
       type: "input",
       message: "What is the department name?",
       name: "departmentName",
     })
+
+    // Pass response through .then method
+    // Use dot notation to access specific response
+    // Insert specific response into database using mySQL syntax
     .then((response) => {
       connection.query(
         "INSERT INTO department (name) VALUES (?)",
         [response.departmentName],
         (err, res) => {
           if (err) throw err;
+
+          // Show response in table form
           console.table(res);
+
+          // Returns user to main prompt
           mainFunc();
         }
       );
