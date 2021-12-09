@@ -64,6 +64,7 @@ function mainFunc() {
         break;
       case "View employee":
         // some function to view employees
+        viewEmployees();
         break;
       case "Update employee role":
         // some function to update employees role
@@ -182,6 +183,16 @@ function viewDepartments() {
 function viewRoles() {
   console.log("You selected: View roles");
   const query = "SELECT * FROM role";
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+    mainFunc();
+  });
+}
+
+function viewEmployees() {
+  console.log("You selected: View employee's");
+  const query = "SELECT * FROM employee";
   connection.query(query, (err, res) => {
     if (err) throw err;
     console.table(res);
