@@ -48,6 +48,7 @@ function mainFunc() {
         break;
       case "Add role":
         // some function to add role
+        newRole();
         break;
       case "Add employee":
         // some function to add employee
@@ -80,6 +81,39 @@ function newDepartment() {
       connection.query(
         "INSERT INTO department (name) VALUES (?)",
         [response.departmentName],
+        (err, res) => {
+          if (err) throw err;
+          console.table(res);
+          mainFunc();
+        }
+      );
+    });
+}
+
+function newRole() {
+  console.log("You selected: Add new role");
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "What is the name of the role?",
+        name: "roleName",
+      },
+      {
+        type: "input",
+        message: "What is the salary for this role?",
+        name: "salary",
+      },
+      {
+        type: "input",
+        message: "What is the department id number?",
+        name: "departmentID",
+      },
+    ])
+    .then((response) => {
+      connection.query(
+        "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)",
+        [response.roleName, response.salary, response.departmentID],
         (err, res) => {
           if (err) throw err;
           console.table(res);
