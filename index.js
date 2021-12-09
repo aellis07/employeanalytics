@@ -52,6 +52,7 @@ function mainFunc() {
         break;
       case "Add employee":
         // some function to add employee
+        newEmployee();
         break;
       case "View departments":
         // some function to view departments
@@ -114,6 +115,49 @@ function newRole() {
       connection.query(
         "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)",
         [response.roleName, response.salary, response.departmentID],
+        (err, res) => {
+          if (err) throw err;
+          console.table(res);
+          mainFunc();
+        }
+      );
+    });
+}
+
+function newEmployee() {
+  console.log("You selected: Add new employee");
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "What is the employee's first name?",
+        name: "firstName",
+      },
+      {
+        type: "input",
+        message: "What is the employee's last name?",
+        name: "lastName",
+      },
+      {
+        type: "input",
+        message: "What is the employee's role id number?",
+        name: "roleID",
+      },
+      {
+        type: "input",
+        message: "What is the manager id number?",
+        name: "managerID",
+      },
+    ])
+    .then((response) => {
+      connection.query(
+        "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)",
+        [
+          response.firstName,
+          response.lastName,
+          response.roleID,
+          response.managerID,
+        ],
         (err, res) => {
           if (err) throw err;
           console.table(res);
