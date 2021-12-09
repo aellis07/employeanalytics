@@ -32,7 +32,7 @@ const mainPrompt = [
       "View roles",
       "View employees",
       "Update employee role",
-      "Quit",
+      "Exit",
     ],
     name: "userchoice",
   },
@@ -68,6 +68,7 @@ function mainFunc() {
         break;
       case "Update employee role":
         // some function to update employees role
+        updateEmployeeRole();
         break;
     }
   });
@@ -198,4 +199,32 @@ function viewEmployees() {
     console.table(res);
     mainFunc();
   });
+}
+function updateEmployeeRole() {
+  console.log("You selected: Update employee role");
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Which employee would you like to update?",
+        name: "updateName",
+      },
+
+      {
+        type: "input",
+        message: "What do you want to update to?",
+        name: "updateRole",
+      },
+    ])
+    .then((response) => {
+      connection.query(
+        "UPDATE employee SET role_id=? WHERE first_name= ?",
+        [response.updateRole, response.updateName],
+        (err, res) => {
+          if (err) throw err;
+          console.table(res);
+          mainFunc();
+        }
+      );
+    });
 }
