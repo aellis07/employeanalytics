@@ -56,6 +56,7 @@ function mainFunc() {
         break;
       case "View departments":
         // some function to view departments
+        viewDepartment();
         break;
       case "View roles":
         // some function to view roles
@@ -165,4 +166,14 @@ function newEmployee() {
         }
       );
     });
+}
+
+function viewDepartment() {
+  console.log("You selected: View department");
+  const query = "SELECT * FROM department";
+  connection.query(query, (err, res) => {
+    if (err) throw err;
+    console.table(res);
+    mainFunc();
+  });
 }
