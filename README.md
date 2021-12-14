@@ -2,7 +2,7 @@
 
 ## Description
 
-A CLI program that allows users to manage company data including departments, employees, roles and salaries
+A CLI program that allows users to manage company data including departments, employees, roles and salaries.
 
 ## License
 
@@ -18,12 +18,12 @@ This project is licensed by: Unlicense.
 
 ## Installation
 
-To successfully run the program be sure to install the general npm package in the root folder in which the package.json file lives
+To successfully run the program be sure to install the general npm package in the root folder in which the package.json file lives.
 `npm install`
 
 ## Usage
 
-Start by typing "node index.js" in the command line. Next, use your up and down arrow buttons to navigate through the options in the prompt. To add a new department, role or employee simply select the option and follow the prompt instructions.
+Start by typing "node index.js" in the command line. Next, use your up and down arrow buttons to navigate through the options in the prompt. To add a new department, role or employee simply select the option and follow the prompt instructions. To update an employees information provide the last name as well as the new role_id they'll have.
 
 ## Contributing
 
