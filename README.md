@@ -18,12 +18,12 @@ This project is licensed by: Unlicense.
 
 ## Installation
 
-N/a
+To successfully run the program be sure to install the general npm package in the root folder in which the package.json file lives
+`npm install`
 
 ## Usage
 
-Start by clicking the get started button on the home page. On the second page users can add saved notes by first typing in the message and then saving the message with the save icon in the upper right hand corner. The user can then add another note by clicking the add note button also in the upper right hand corner.
-If the user wants to delete any specific note they can click on the red trashcan icon deleting only that selection
+Start by typing "node index.js" in the command line. Next, use your up and down arrow buttons to navigate through the options in the prompt. To add a new department, role or employee simply select the option and follow the prompt instructions.
 
 ## Contributing
 

@@ -225,16 +225,17 @@ function updateEmployeeRole() {
 
       {
         type: "input",
-        message: "What do you want to update to?",
+        message: "What role do you want to update to?",
         name: "updateRole",
       },
     ])
     .then((response) => {
       connection.query(
-        "UPDATE employee SET role_id=? WHERE first_name= ?",
+        "UPDATE employee SET role_id=? WHERE last_name= ?",
         [response.updateRole, response.updateName],
         (err, res) => {
           if (err) throw err;
+          console.log(response);
           console.table(res);
           mainFunc();
         }
