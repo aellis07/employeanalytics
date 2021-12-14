@@ -18,8 +18,7 @@ This project is licensed by: Unlicense.
 
 ## Installation
 
-To successfully run the program be sure to install the general npm package in the root folder in which the package.json file lives.
-`npm install`
+To successfully run the program be sure to install the general npm package `npm install` in the root folder in which the package.json file lives.
 
 ## Usage
 
