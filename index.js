@@ -109,6 +109,7 @@ function newDepartment() {
 
 function newRole() {
   console.log("You selected: Add new role");
+  // Prompt for selected response
   inquirer
     .prompt([
       {
@@ -128,11 +129,15 @@ function newRole() {
       },
     ])
     .then((response) => {
+      // Taking prompt response and passing the data to mysql
+      // INSERT to add new data to the database
       connection.query(
         "INSERT INTO role (title, salary, department_id) VALUES (?, ?, ?)",
+        // Prompt response accessed using dot notation
         [response.roleName, response.salary, response.departmentID],
         (err, res) => {
           if (err) throw err;
+          // Returning response using console.table
           console.table(res);
           mainFunc();
         }
@@ -185,6 +190,7 @@ function newEmployee() {
 
 function viewDepartments() {
   console.log("You selected: View department");
+  // SELECT * FROM to see specific tables in databases
   const query = "SELECT * FROM department";
   connection.query(query, (err, res) => {
     if (err) throw err;
@@ -230,12 +236,13 @@ function updateEmployeeRole() {
       },
     ])
     .then((response) => {
+      // UPDATE to update previously stored data
+      // Requires role_id and last_name input
       connection.query(
         "UPDATE employee SET role_id=? WHERE last_name= ?",
         [response.updateRole, response.updateName],
         (err, res) => {
           if (err) throw err;
-          console.log(response);
           console.table(res);
           mainFunc();
         }
