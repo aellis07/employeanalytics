@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
   port: 3306,
   user: "root",
   password: "codingcrazy",
-  database: "company_db",
+  database: "employees",
 });
 
 // CALLING mainFunc(); WHEN CONNECTION IS MADE
@@ -63,7 +63,7 @@ function mainFunc() {
         // some function to view roles
         viewRoles();
         break;
-      case "View employee":
+      case "View employees":
         // some function to view employees
         viewEmployees();
         break;
@@ -208,6 +208,7 @@ function viewEmployees() {
   const query = "SELECT * FROM employee";
   connection.query(query, (err, res) => {
     if (err) throw err;
+    console.log("Test");
     console.table(res);
     mainFunc();
   });
