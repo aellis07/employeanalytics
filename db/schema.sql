@@ -4,21 +4,25 @@ CREATE DATABASE company_db;
 USE company_db;
 
 CREATE TABLE department (
-id INT PRIMARY KEY,
+id INT PRIMARY KEY NOT NULL,
 name VARCHAR(30) NOT NULL
 );
 
 CREATE TABLE role (
-id INT PRIMARY KEY,
+id INT PRIMARY KEY NOT NULL,
 title VARCHAR(30) NOT NULL,
 salary DECIMAL,
 department_id INT
 );
 
 CREATE TABLE employee (
-id INT PRIMARY KEY,
+id INT PRIMARY KEY NOT NULL,
 first_name VARCHAR(30),
 last_name VARCHAR(30),
 role_id INT,
 manager_id INT
 );
+
+ALTER TABLE department CHANGE id id INT(8) AUTO_INCREMENT PRIMARY KEY(id);
+ALTER TABLE role CHANGE id id INT(8) AUTO_INCREMENT PRIMARY KEY(id);
+ALTER TABLE employee CHANGE id id INT(8) AUTO_INCREMENT PRIMARY KEY(id);
