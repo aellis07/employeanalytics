@@ -164,15 +164,15 @@ function newEmployee() {
         message: "What is the employee's role id number?",
         name: "roleID",
       },
-      {
-        type: "input",
-        message: "What is the manager id number?",
-        name: "managerID",
-      },
+      // {
+      //   type: "input",
+      //   message: "What is the manager id number?",
+      //   name: "managerID",
+      // },
     ])
     .then((response) => {
       connection.query(
-        "INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?)",
+        "INSERT INTO employee (first_name, last_name, role_id) VALUES (?, ?, ?)",
         [
           response.firstName,
           response.lastName,
