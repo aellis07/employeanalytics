@@ -18,7 +18,7 @@ This project is licensed by: Unlicense.
 
 ## Installation
 
-To successfully run the program be sure to install the general npm package `npm install` in the root folder in which the package.json file lives.
+First, go to the folder where your package.json file is located. Next, open a terminal from that folder and type `npm install` into the command line to install the neccessary node packages for the program. Lastly, after the downloader is finished installing, type `node index.js` or `npm start` to start the program.
 
 ## Usage
 
